@@ -1,156 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVTAR CUSTOMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: white; font-family: sans-serif; }
+        .bottle-preview { 
+            background: linear-gradient(145deg, #1a1a1a, #000);
+            border: 1px solid #22D3EE;
+        }
+    </style>
+</head>
+<body class="p-5">
+    <h1 class="text-cyan-400 text-center text-2xl font-bold tracking-widest mb-6">AVTAR CUSTOMS</h1>
 
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+    <div class="bottle-preview h-64 rounded-3xl flex items-center justify-center mb-6 shadow-lg shadow-cyan-500/20">
+        <div id="previewText" class="text-3xl font-bold tracking-tighter transition-all">YOUR NAME</div>
+    </div>
 
-void main() => runApp(AvtarApp());
+    <div class="space-y-4">
+        <div>
+            <label class="block text-sm text-gray-400 mb-1">Personalize Name</label>
+            <input type="text" id="nameInput" placeholder="Enter Name..." 
+                class="w-full bg-zinc-900 border border-zinc-700 rounded-xl p-3 focus:border-cyan-400 outline-none">
+        </div>
 
-class AvtarApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: ProductDetailScreen(),
-    );
-  }
-}
+        <div>
+            <label class="block text-sm text-gray-400 mb-2">Select Color</label>
+            <div class="flex gap-4">
+                <button onclick="changeColor('#fff')" class="w-8 h-8 rounded-full bg-white border-2 border-transparent focus:border-cyan-400"></button>
+                <button onclick="changeColor('#FDE047')" class="w-8 h-8 rounded-full bg-yellow-300 border-2 border-transparent focus:border-cyan-400"></button>
+                <button onclick="changeColor('#22D3EE')" class="w-8 h-8 rounded-full bg-cyan-400 border-2 border-transparent focus:border-cyan-400"></button>
+            </div>
+        </div>
 
-class ProductDetailScreen extends StatefulWidget {
-  @override
-  _ProductDetailScreenState createState() => _ProductDetailScreenState();
-}
+        <div class="pt-4 border-t border-zinc-800">
+            <div class="flex justify-between items-end mb-4">
+                <div>
+                    <p class="text-gray-400 text-sm">Total Price</p>
+                    <p class="text-2xl font-bold text-white">₹499</p>
+                </div>
+                <button onclick="sendOrder()" class="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-2xl transition-all">
+                    ORDER ON WHATSAPP
+                </button>
+            </div>
+        </div>
+    </div>
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  String customName = "YOUR NAME";
-  Color selectedColor = Colors.white; // Default text color
+    <script>
+        let selectedColor = "#fff";
+        const nameInput = document.getElementById('nameInput');
+        const previewText = document.getElementById('previewText');
 
-  // WhatsApp logic with your number
-  void launchWhatsApp() async {
-    String phone = "917535034146"; // Aapka WhatsApp number
-    String colorName = selectedColor == Colors.white ? "White" : 
-                       selectedColor == Colors.yellow ? "Yellow" : "Cyan";
-    
-    String message = "Hi AVTAR! New Order:\n"
-                     "Product: Premium Custom Bottle\n"
-                     "Name on Bottle: $customName\n"
-                     "Print Color: $colorName";
+        nameInput.oninput = () => {
+            previewText.innerText = nameInput.value.toUpperCase() || "YOUR NAME";
+        }
 
-    var url = "https://wa.me/$phone?text=${Uri.encodeComponent(message)}";
-    
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    } else {
-      print("Could not launch WhatsApp");
-    }
-  }
+        function changeColor(color) {
+            selectedColor = color;
+            previewText.style.color = color;
+        }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("AVTAR", style: TextStyle(color: Colors.cyan, letterSpacing: 2)),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // --- 1. LIVE PREVIEW SECTION ---
-            Container(
-              margin: EdgeInsets.all(15),
-              height: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.cyan.withOpacity(0.3)),
-              ),
-              child: Center(
-                child: Text(
-                  customName,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 28, 
-                    fontWeight: FontWeight.bold, 
-                    color: selectedColor, // Yeh color change hoga
-                    letterSpacing: 1.5,
-                  ),
-                ),
-              ),
-            ),
-
-            // --- 2. CUSTOMIZATION TOOLS ---
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("1. Enter Name", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 10),
-                  TextField(
-                    onChanged: (val) => setState(() => customName = val.toUpperCase()),
-                    decoration: InputDecoration(
-                      hintText: "Type Name Here...",
-                      filled: true,
-                      fillColor: Colors.grey[900],
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Text("2. Select Print Color", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      _colorOption(Colors.white),
-                      _colorOption(Colors.yellow),
-                      _colorOption(Colors.cyanAccent),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            // --- 3. WHATSAPP BUTTON ---
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton.icon(
-                  onPressed: launchWhatsApp,
-                  icon: Icon(Icons.shopping_cart, color: Colors.white),
-                  label: Text("ORDER ON WHATSAPP", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF25D366), // WhatsApp Green
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // Color picker dot helper
-  Widget _colorOption(Color color) {
-    return GestureDetector(
-      onTap: () => setState(() => selectedColor = color),
-      child: Container(
-        margin: EdgeInsets.only(right: 15),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: selectedColor == color ? Colors.white : Colors.transparent,
-            width: 3,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
+        function sendOrder() {
+            const name = nameInput.value || "Not Specified";
+            const phone = "917535034146";
+            const message = `Hi AVTAR! New Order:\nProduct: Custom Bottle\nName: ${name}\nColor: ${selectedColor}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
