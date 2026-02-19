@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVTAR</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #000; color: white; text-align: center; }
+        header { background: #1a1a1a; padding: 30px; font-size: 32px; font-weight: 900; letter-spacing: 5px; border-bottom: 3px solid #00d4ff; color: #00d4ff; }
+        .container { padding: 20px; }
+        .product-card { background: #111; border-radius: 25px; padding: 25px; margin-bottom: 40px; border: 1px solid #333; box-shadow: 0 0 20px rgba(0,212,255,0.2); }
+        .bottle-img { width: 100%; border-radius: 20px; max-width: 280px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
+        h3 { color: #fff; margin: 15px 0; font-size: 24px; text-transform: uppercase; }
+        p { color: #aaa; margin-bottom: 20px; }
+        input, select { width: 90%; padding: 15px; margin: 12px 0; border-radius: 10px; border: 1px solid #444; background: #222; color: white; font-size: 16px; }
+        .order-btn { background: linear-gradient(45deg, #00d4ff, #005f73); color: white; border: none; padding: 18px; border-radius: 35px; font-size: 20px; cursor: pointer; font-weight: bold; transition: 0.4s; width: 100%; text-transform: uppercase; }
+        .order-btn:hover { box-shadow: 0 0 30px #00d4ff; transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+<header>AVTAR</header>
+
+<div class="container">
+    <div class="product-card">
+        <img src="1000010907.jpg" class="bottle-img" alt="AVTAR Standard"> 
+        <h3>AVTAR Standard</h3>
+        <p>Pure & Premium Hydration</p>
+        <button class="order-btn" onclick="sendOrder('AVTAR Standard')">Enquiry / Order</button>
+    </div>
+
+    <div class="product-card">
+        <img src="1000010899.jpg" class="bottle-img" alt="AVTAR Custom"> 
+        <h3>AVTAR Custom</h3>
+        <p>Personalized Design for You</p>
+        <input type="text" id="custName" placeholder="Bottle par kya naam likhna hai?">
+        <select id="size">
+            <option value="500ml">500ml</option>
+            <option value="1 Litre">1 Litre</option>
+        </select>
+        <button class="order-btn" onclick="sendCustomOrder()">Order Custom Bottle</button>
+    </div>
+</div>
+
+<script>
+    const MY_NUMBER = "917535034146";
+
+    function sendOrder(item) {
+        let message = `Hello AVTAR!%0A%0AMujhe is bottle ke baare mein jaankari chahiye:%0A*Item:* ${item}`;
+        window.open(`https://wa.me/${MY_NUMBER}?text=${message}`, '_blank');
+    }
+
+    function sendCustomOrder() {
+        let nameOnBottle = document.getElementById('custName').value;
+        let size = document.getElementById('size').value;
+        
+        if(nameOnBottle == "") {
+            alert("Please enter the name for the bottle!");
+            return;
+        }
+        
+        let message = `Hello AVTAR!%0A%0AMujhe *Custom Edition* order karni hai:%0A*Naam:* ${nameOnBottle}%0A*Size:* ${size}`;
+        window.open(`https://wa.me/${MY_NUMBER}?text=${message}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
