@@ -3,50 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pani Ki Botal Store</title>
+    <title>Avtar Royal Custom Bottles</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; text-align: center; }
-        h1 { color: #007bff; }
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
-        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 150px; object-fit: contain; border-radius: 5px; }
-        .price { font-size: 20px; color: green; font-weight: bold; margin: 10px 0; }
-        button { background: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; }
-        button:hover { background: #218838; }
+        :root { --gold: #D4AF37; --royal-blue: #002366; --white: #ffffff; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; margin: 0; color: #333; }
+        
+        /* Royal Header */
+        header { 
+            background: linear-gradient(135deg, var(--royal-blue), #001233); 
+            color: var(--gold); padding: 30px 15px; text-align: center; 
+            border-bottom: 4px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        header h1 { margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        header p { color: white; margin-top: 5px; font-style: italic; }
+
+        /* Grid Layout */
+        .container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
+        
+        /* Premium Card */
+        .card { 
+            background: white; border-radius: 15px; overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #ddd;
+            display: flex; flex-direction: column; transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        
+        .info { padding: 12px; text-align: center; }
+        .tag { background: var(--gold); color: black; font-size: 10px; font-weight: bold; 
+               padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; }
+        .title { font-size: 15px; font-weight: bold; margin-bottom: 5px; }
+        .price { color: #1b4332; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        
+        /* Action Buttons */
+        .btn-box { display: flex; flex-direction: column; gap: 5px; padding: 0 10px 12px; }
+        .buy-btn { background: var(--royal-blue); color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .cust-btn { background: #25D366; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; font-size: 13px; }
     </style>
 </head>
 <body>
 
-    <h1>💧 Hamari Water Bottles (₹20 - ₹30)</h1>
-    <p>Sabse sasti aur badhiya quality!</p>
+<header>
+    <h1>👑 Avtar Royal Store</h1>
+    <p>Premium Customized Bottles for Every Event</p>
+</header>
 
-    <div class="container" id="product-list">
-        </div>
+<div class="container" id="product-grid">
+    </div>
 
-    <script>
-        const products = [
-            { name: "Mineral Water 1L", price: "20" },
-            { name: "Cool Blue Bottle", price: "25" },
-            { name: "Fresh Jal 1L", price: "20" },
-            { name: "Sports Bottle Small", price: "30" },
-            { name: "Eco Friendly Bottle", price: "30" },
-            { name: "Clear Spring Water", price: "20" }
-        ];
+<script>
+    const grid = document.getElementById('product-grid');
+    const events = [
+        { name: "Wedding Special", price: "30", tag: "SHADI", img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400" },
+        { name: "Birthday Custom", price: "25", tag: "PARTY", img: "https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=400" },
+        { name: "Royal Mineral", price: "20", tag: "REGULAR", img: "https://images.unsplash.com/photo-1559839914-17aae19cea0e?w=400" },
+        { name: "Anniversary Edition", price: "30", tag: "ROYAL", img: "https://images.unsplash.com/photo-1527236438218-d82077ae1f85?w=400" }
+    ];
 
-        const list = document.getElementById('product-list');
-
-        // 20-30 bottles dikhane ke liye loop
-        for(let i=1; i<=25; i++) {
-            let item = products[Math.floor(Math.random() * products.length)];
-            list.innerHTML += `
-                <div class="card">
-                    <img src="https://via.placeholder.com/150?text=Bottle+${i}" alt="Bottle">
-                    <h3>${item.name} #${i}</h3>
-                    <p class="price">₹${item.price}</p>
-                    <button>Abhi Kharidein</button>
+    // Number of bottles (20-30 products)
+    for(let i = 1; i <= 24; i++) {
+        const item = events[i % events.length];
+        grid.innerHTML += `
+            <div class="card">
+                <img src="${item.img}" alt="Bottle">
+                <div class="info">
+                    <span class="tag">${item.tag}</span>
+                    <div class="title">${item.name} #${i}</div>
+                    <div class="price">₹${item.price}</div>
                 </div>
-            `;
-        }
-    </script>
+                <div class="btn-box">
+                    <button class="buy-btn">Add to Cart</button>
+                    <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Mujhe ${item.name} customize karwani hai" class="cust-btn">WhatsApp Order</a>
+                </div>
+            </div>
+        `;
+    }
+</script>
+
 </body>
 </html>
