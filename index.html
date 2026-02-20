@@ -1,124 +1,52 @@
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pani Ki Botal Store</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; text-align: center; }
+        h1 { color: #007bff; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 150px; object-fit: contain; border-radius: 5px; }
+        .price { font-size: 20px; color: green; font-weight: bold; margin: 10px 0; }
+        button { background: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; width: 100%; }
+        button:hover { background: #218838; }
+    </style>
+</head>
+<body>
 
-void main() => runApp(AvtarApp());
+    <h1>💧 Hamari Water Bottles (₹20 - ₹30)</h1>
+    <p>Sabse sasti aur badhiya quality!</p>
 
-class AvtarApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: ProductDetailScreen(),
-    );
-  }
-}
+    <div class="container" id="product-list">
+        </div>
 
-class ProductDetailScreen extends StatefulWidget {
-  @override
-  _ProductDetailScreenState createState() => _ProductDetailScreenState();
-}
+    <script>
+        const products = [
+            { name: "Mineral Water 1L", price: "20" },
+            { name: "Cool Blue Bottle", price: "25" },
+            { name: "Fresh Jal 1L", price: "20" },
+            { name: "Sports Bottle Small", price: "30" },
+            { name: "Eco Friendly Bottle", price: "30" },
+            { name: "Clear Spring Water", price: "20" }
+        ];
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  String customName = "YOUR NAME";
-  Color selectedColor = Colors.white; // Default text color
+        const list = document.getElementById('product-list');
 
-  // WhatsApp logic with your number
-  void launchWhatsApp() async {
-    String phone = "917535034146"; // Aapka WhatsApp number
-    String colorName = selectedColor == Colors.white ? "White" : 
-                       selectedColor == Colors.yellow ? "Yellow" : "Cyan";
-    
-    String message = "Hi AVTAR! New Order:\n"
-                     "Product: Premium Custom Bottle\n"
-                     "Name on Bottle: $customName\n"
-                     "Print Color: $colorName";
-
-    var url = "https://wa.me/$phone?text=${Uri.encodeComponent(message)}";
-    
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    } else {
-      print("Could not launch WhatsApp");
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("AVTAR", style: TextStyle(color: Colors.cyan, letterSpacing: 2)),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // --- 1. LIVE PREVIEW SECTION ---
-            Container(
-              margin: EdgeInsets.all(15),
-              height: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.cyan.withOpacity(0.3)),
-              ),
-              child: Center(
-                child: Text(
-                  customName,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 28, 
-                    fontWeight: FontWeight.bold, 
-                    color: selectedColor, // Yeh color change hoga
-                    letterSpacing: 1.5,
-                  ),
-                ),
-              ),
-            ),
-
-            // --- 2. CUSTOMIZATION TOOLS ---
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("1. Enter Name", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 10),
-                  TextField(
-                    onChanged: (val) => setState(() => customName = val.toUpperCase()),
-                    decoration: InputDecoration(
-                      hintText: "Type Name Here...",
-                      filled: true,
-                      fillColor: Colors.grey[900],
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Text("2. Select Print Color", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      _colorOption(Colors.white),
-                      _colorOption(Colors.yellow),
-                      _colorOption(Colors.cyanAccent),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            // --- 3. WHATSAPP BUTTON ---
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton.icon(
-                  onPressed: launchWhatsApp,
-                  icon: Icon(Icons.shopping_cart, color: Colors.white),
-                  label: Text("ORDER ON WHATSAPP", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF25D366), // WhatsApp Green
-
-    
+        // 20-30 bottles dikhane ke liye loop
+        for(let i=1; i<=25; i++) {
+            let item = products[Math.floor(Math.random() * products.length)];
+            list.innerHTML += `
+                <div class="card">
+                    <img src="https://via.placeholder.com/150?text=Bottle+${i}" alt="Bottle">
+                    <h3>${item.name} #${i}</h3>
+                    <p class="price">₹${item.price}</p>
+                    <button>Abhi Kharidein</button>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
