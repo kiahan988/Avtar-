@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,56 +7,38 @@
     <style>
         :root { --primary: #001f3f; --gold: #FFD700; --whatsapp: #25D366; }
         body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 0; text-align: center; }
-        header { background: var(--primary); color: var(--gold); padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        header { background: var(--primary); color: var(--gold); padding: 30px; }
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px; }
-        .card { background: white; border-radius: 20px; width: 330px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); }
-        .card img { width: 100%; height: 350px; object-fit: cover; }
+        .card { background: white; border-radius: 20px; width: 330px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 350px; object-fit: cover; background: #eee; }
         .content { padding: 20px; }
-        .tag { background: #ff4757; color: white; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: bold; }
         .price { font-size: 26px; color: #2ecc71; font-weight: bold; margin: 15px 0; }
-        .qty-input { margin-bottom: 20px; }
-        input[type="number"] { width: 80px; padding: 8px; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
-        .btn-wa { background: var(--whatsapp); color: white; padding: 15px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: bold; gap: 10px; font-size: 18px; }
+        .btn-wa { background: var(--whatsapp); color: white; padding: 15px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>👑 AVTAR ROYAL STORE</h1>
-    <p style="color: white; opacity: 0.8;">Premium Customized Water Bottles</p>
+    <p style="color: white;">Premium Customized Water Bottles</p>
 </header>
 
 <div class="container">
     <div class="card">
-        <img src="https://raw.githubusercontent.com/kiahan988/Avtar-/main/1000010907.jpg" alt="Avtar Normal Bottle">
+        <img src="1000010907.jpg" alt="Normal Bottle">
         <div class="content">
-            <span class="tag" style="background: var(--primary);">AVTAR NAAM</span>
-            <h3>Premium Packaged Water</h3>
+            <h3 style="color:var(--primary)">AVTAR NAAM BOTTLE</h3>
             <p class="price">₹15</p>
-            <div class="qty-input">
-                <label>Quantity: </label>
-                <input type="number" value="100" min="20">
-            </div>
-            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Normal Packaged Water Bottles" class="btn-wa">
-                Order on WhatsApp
-            </a>
+            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Normal Water Bottle" class="btn-wa">Order on WhatsApp</a>
         </div>
     </div>
 
     <div class="card">
-        <img src="https://raw.githubusercontent.com/kiahan988/Avtar-/main/1000013359.png" alt="Shadi Couple Bottle">
+        <img src="1000013359.png" alt="Shadi Bottle">
         <div class="content">
-            <span class="tag">WEDDING SPECIAL</span>
-            <h3>Shadi Custom Bottle</h3>
+            <h3 style="color:var(--primary)">SHADI CUSTOM BOTTLE</h3>
             <p class="price">₹60</p>
-            <div class="qty-input">
-                <label>Quantity: </label>
-                <input type="number" value="100" min="50">
-            </div>
-            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Shadi Custom Bottles with Couple Photo" class="btn-wa">
-                Order on WhatsApp
-            </a>
+            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Shadi Couple Bottle" class="btn-wa">Order on WhatsApp</a>
         </div>
     </div>
 </div>
