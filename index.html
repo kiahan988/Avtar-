@@ -3,82 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avtar Royal Custom Bottles</title>
+    <title>Avtar Royal Store | Order Now</title>
     <style>
-        :root { --gold: #D4AF37; --royal-blue: #002366; --white: #ffffff; }
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; margin: 0; color: #333; }
-        
-        /* Royal Header */
-        header { 
-            background: linear-gradient(135deg, var(--royal-blue), #001233); 
-            color: var(--gold); padding: 30px 15px; text-align: center; 
-            border-bottom: 4px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        :root {
+            --primary: #001f3f; 
+            --gold: #FFD700;
+            --whatsapp: #25D366;
+            --white: #ffffff;
         }
-        header h1 { margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
-        header p { color: white; margin-top: 5px; font-style: italic; }
 
-        /* Grid Layout */
-        .container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; }
         
-        /* Premium Card */
-        .card { 
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #ddd;
-            display: flex; flex-direction: column; transition: 0.3s;
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,31,63,0.9), rgba(0,31,63,0.9)), 
+                        url('https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            color: var(--gold);
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
-        
-        .info { padding: 12px; text-align: center; }
-        .tag { background: var(--gold); color: black; font-size: 10px; font-weight: bold; 
-               padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 5px; }
-        .title { font-size: 15px; font-weight: bold; margin-bottom: 5px; }
-        .price { color: #1b4332; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-        
-        /* Action Buttons */
-        .btn-box { display: flex; flex-direction: column; gap: 5px; padding: 0 10px 12px; }
-        .buy-btn { background: var(--royal-blue); color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .cust-btn { background: #25D366; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; font-size: 13px; }
+
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 30px; }
+
+        /* Card Design */
+        .card {
+            background: var(--white);
+            width: 320px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: 0.4s;
+            border: 1px solid #ddd;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+
+        .content { padding: 20px; text-align: center; }
+
+        .tag {
+            background: var(--gold);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        h3 { margin: 15px 0 5px; color: var(--primary); font-size: 20px; }
+        .price { font-size: 24px; color: #2ecc71; font-weight: bold; margin-bottom: 15px; }
+
+        /* Order Box */
+        .order-options { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 15px; }
+        input[type="number"] { width: 80px; padding: 8px; border-radius: 8px; border: 1px solid #ccc; text-align: center; }
+
+        /* WhatsApp Button */
+        .btn-wa {
+            background-color: var(--whatsapp);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .btn-wa:hover { background-color: #1eb954; box-shadow: 0 5px 15px rgba(37,211,102,0.4); }
+
     </style>
 </head>
 <body>
 
 <header>
-    <h1>👑 Avtar Royal Store</h1>
-    <p>Premium Customized Bottles for Every Event</p>
+    <h1 style="margin:0; letter-spacing: 2px;">👑 AVTAR ROYAL STORE</h1>
+    <p style="color: white; opacity: 0.8;">Premium Customized Water Bottles</p>
 </header>
 
-<div class="container" id="product-grid">
+<div class="container">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1000" alt="Birthday Bottle">
+        <div class="content">
+            <span class="tag">Birthday Special</span>
+            <h3>Custom Birthday Bottle</h3>
+            <div class="price">₹25</div>
+            
+            <div class="order-options">
+                <label>Quantity: </label>
+                <input type="number" id="qty1" value="100" min="20">
+            </div>
+
+            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Birthday Special Bottles" class="btn-wa">
+                Order on WhatsApp
+            </a>
+        </div>
     </div>
 
-<script>
-    const grid = document.getElementById('product-grid');
-    const events = [
-        { name: "Wedding Special", price: "30", tag: "SHADI", img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400" },
-        { name: "Birthday Custom", price: "25", tag: "PARTY", img: "https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=400" },
-        { name: "Royal Mineral", price: "20", tag: "REGULAR", img: "https://images.unsplash.com/photo-1559839914-17aae19cea0e?w=400" },
-        { name: "Anniversary Edition", price: "30", tag: "ROYAL", img: "https://images.unsplash.com/photo-1527236438218-d82077ae1f85?w=400" }
-    ];
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Wedding Bottle">
+        <div class="content">
+            <span class="tag" style="background:#ff4757; color:white;">Wedding / Shadi</span>
+            <h3>Royal Wedding Bottle</h3>
+            <div class="price">₹30</div>
 
-    // Number of bottles (20-30 products)
-    for(let i = 1; i <= 24; i++) {
-        const item = events[i % events.length];
-        grid.innerHTML += `
-            <div class="card">
-                <img src="${item.img}" alt="Bottle">
-                <div class="info">
-                    <span class="tag">${item.tag}</span>
-                    <div class="title">${item.name} #${i}</div>
-                    <div class="price">₹${item.price}</div>
-                </div>
-                <div class="btn-box">
-                    <button class="buy-btn">Add to Cart</button>
-                    <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Mujhe ${item.name} customize karwani hai" class="cust-btn">WhatsApp Order</a>
-                </div>
+            <div class="order-options">
+                <label>Quantity: </label>
+                <input type="number" id="qty2" value="500" min="50">
             </div>
-        `;
-    }
-</script>
+
+            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Wedding Special Bottles" class="btn-wa">
+                Order on WhatsApp
+            </a>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
