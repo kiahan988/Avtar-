@@ -67,14 +67,6 @@
             font-weight: 600; 
             color: #555; 
             text-align: left;
-        }
-        
-        .qty-box { 
-            width: 100%; 
-            padding: 12px; 
-            margin-bottom: 15px; 
-<!DOCTYPE html>
-<html lang="hi">
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -82,53 +74,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avtar Royal Store</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8f9fa; text-align: center; }
-        header { background-color: #001f3f; color: #FFD700; padding: 25px; border-bottom: 4px solid #FFD700; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f0f2f5; text-align: center; }
+        header { background-color: #001f3f; color: #FFD700; padding: 25px; border-bottom: 5px solid #FFD700; }
         header h1 { margin: 0; font-size: 26px; }
         .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
-        .card { background: white; border-radius: 12px; width: 300px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #eee; }
-        .card img { width: 100%; height: 250px; object-fit: contain; border-radius: 8px; background: #fff; }
+        .card { background: white; border-radius: 15px; width: 300px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); border: 1px solid #ddd; }
+        /* Image fix: Direct links from Unsplash */
+        .card img { width: 100%; height: 250px; object-fit: contain; border-radius: 10px; background: #fff; }
         h3 { color: #001f3f; margin: 15px 0; }
-        .qty-box { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
-        .btn { display: block; background: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; width: 100%; font-size: 16px; }
-        .btn:hover { background: #128C7E; }
-        .note { font-size: 11px; color: #888; margin-top: 10px; }
+        .qty-box { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 8px; box-sizing: border-box; font-size: 16px; outline: none; }
+        .qty-box:focus { border-color: #001f3f; }
+        .btn { display: block; background: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; width: 100%; font-size: 16px; transition: 0.3s; }
+        .btn:hover { background: #128C7E; transform: scale(1.02); }
+        .note { font-size: 11px; color: #777; margin-top: 10px; font-style: italic; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>👑 AVTAR ROYAL STORE</h1>
-    <p>Premium Plastic Water Bottles - Wholesale</p>
+    <p>Premium Plastic Bottles - Wholesale Rate</p>
 </header>
 
 <div class="container">
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500" alt="Normal Bottle">
+        <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500" alt="Plastic Bottle">
         <h3>Normal Plastic Bottle</h3>
-        <input type="number" id="q1" class="qty-box" placeholder="Kitni quantity chahiye?">
-        <button class="btn" onclick="sendToWA('Normal Plastic Bottle', 'q1')">WhatsApp Order</button>
-        <p class="note">Price details WhatsApp par milengi</p>
+        <input type="number" id="q1" class="qty-box" placeholder="Quantity batayein (Ex: 100)">
+        <button class="btn" onclick="order('Normal Plastic Bottle', 'q1')">WhatsApp Order</button>
+        <p class="note">Price details on WhatsApp</p>
     </div>
 
     <div class="card">
         <img src="https://images.unsplash.com/photo-1616149162402-e25394014902?w=500" alt="Clear Bottle">
-        <h3>Clear Plastic Bottle</h3>
-        <input type="number" id="q2" class="qty-box" placeholder="Kitni quantity chahiye?">
-        <button class="btn" onclick="sendToWA('Clear Plastic Bottle', 'q2')">WhatsApp Order</button>
-        <p class="note">Best rates for bulk orders</p>
+        <h3>Premium Clear Bottle</h3>
+        <input type="number" id="q2" class="qty-box" placeholder="Quantity batayein (Ex: 500)">
+        <button class="btn" onclick="order('Premium Clear Bottle', 'q2')">WhatsApp Order</button>
+        <p class="note">Badi quantity par heavy discount</p>
     </div>
 </div>
 
 <script>
-    function sendToWA(name, id) {
+    function order(name, id) {
         var qty = document.getElementById(id).value;
-        if(!qty || qty <= 0) { alert("Bhai, pehle quantity toh likho!"); return; }
+        if(!qty || qty <= 0) { 
+            alert("Bhai, pehle quantity toh likho!"); 
+            return; 
+        }
         
         var phone = "917535034146";
-        var message = "Namaste Avtar Royal Store,%0A%0AMujhe order book karna hai:%0A*Item:* " + name + "%0A*Quantity:* " + qty + " pieces.%0A%0AKripya price batayein.";
+        var msg = "Namaste Avtar Royal Store,%0A%0AMujhe order book karna hai:%0A*Item:* " + name + "%0A*Quantity:* " + qty + " pieces.%0A%0AKripya iska rate batayein.";
         
-        window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + message, "_blank");
+        window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + msg, "_blank");
     }
 </script>
 
