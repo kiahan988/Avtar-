@@ -1,60 +1,155 @@
 <<!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avtar Royal Store</title>
+    <title>Avtar Royal Store | Order Now</title>
     <style>
-        :root { --primary: #001f3f; --gold: #FFD700; --whatsapp: #25D366; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 0; text-align: center; }
-        header { background: var(--primary); color: var(--gold); padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px; }
-        .card { background: white; border-radius: 20px; width: 330px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.3s; margin-bottom: 20px;}
-        .card img { width: 100%; height: auto; min-height: 300px; object-fit: contain; background: #fff; }
-        .content { padding: 20px; }
-        .tag { background: var(--primary); color: white; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: bold; }
-        .price { font-size: 26px; color: #2ecc71; font-weight: bold; margin: 15px 0; }
-        .qty-input { margin-bottom: 20px; }
-        input[type="number"] { width: 80px; padding: 8px; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
-        .btn-wa { background: var(--whatsapp); color: white; padding: 15px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: bold; gap: 10px; font-size: 18px; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; 
+            background-color: #f0f2f5; 
+            color: #333; 
+        }
+        
+        header { 
+            background-color: #001f3f; 
+            color: #FFD700; 
+            padding: 30px 15px; 
+            text-align: center; 
+            border-bottom: 5px solid #FFD700;
+        }
+
+        header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
+        header p { color: #ffffff; margin-top: 5px; font-size: 14px; opacity: 0.9; }
+        
+        .container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            padding: 30px 15px; 
+            gap: 25px; 
+        }
+
+        .card { 
+            background: #ffffff; 
+            border-radius: 15px; 
+            width: 320px; 
+            padding: 20px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+            border: 1px solid #e1e4e8;
+            transition: 0.3s;
+        }
+        
+        .card:hover { transform: translateY(-5px); }
+
+        .card img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: contain; 
+            margin-bottom: 20px; 
+            border-radius: 10px;
+        }
+        
+        h3 { color: #001f3f; margin: 10px 0; font-size: 22px; }
+        
+        .order-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        label { 
+            display: block; 
+            font-size: 14px; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: #555; 
+            text-align: left;
+        }
+        
+        .qty-box { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 15px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            box-sizing: border-box; /* Error prevention */
+        }
+
+        .qty-box:focus { border-color: #001f3f; outline: none; }
+        
+        .wa-btn { 
+            display: block; 
+            background-color: #25D366; 
+            color: white; 
+            padding: 14px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .wa-btn:hover { background-color: #128C7E; }
+        
+        .footer-note { font-size: 11px; color: #777; margin-top: 12px; font-style: italic; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>👑 AVTAR ROYAL STORE</h1>
-    <p style="color: white; opacity: 0.8;">Premium Customized Water Bottles</p>
-</header>
+    <header>
+        <h1>👑 AVTAR ROYAL STORE</h1>
+        <p>Premium Plastic Bottles - Wholesale & Retail</p>
+    </header>
 
-<div class="container">
-    <div class="card">
-        <img src="1000010907.jpg" alt="Normal Bottle">
-        <div class="content">
-            <span class="tag">AVTAR NAAM</span>
-            <h3>Premium Packaged Water</h3>
-            <p class="price">₹20</p>
-            <div class="qty-input">
-                <label>Quantity: </label>
-                <input type="number" value="100" min="20">
+    <div class="container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?q=80&w=400" alt="Normal Bottle">
+            <h3>Normal Bottle</h3>
+            <div class="order-box">
+                <label>Order Quantity (pieces):</label>
+                <input type="number" id="qty1" class="qty-box" placeholder="Ex: 100" min="1">
+                <button class="wa-btn" onclick="sendOrder('Normal Plastic Bottle', 'qty1')">WhatsApp Order</button>
+                <p class="footer-note">Price details on WhatsApp</p>
             </div>
-            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Normal Water Bottle" class="btn-wa">Order on WhatsApp</a>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1559839914-17aae19cea0e?q=80&w=400" alt="Simple Bottle">
+            <h3>Daily Use Bottle</h3>
+            <div class="order-box">
+                <label>Order Quantity (pieces):</label>
+                <input type="number" id="qty2" class="qty-box" placeholder="Ex: 500" min="1">
+                <button class="wa-btn" onclick="sendOrder('Daily Use Bottle', 'qty2')">WhatsApp Order</button>
+                <p class="footer-note">Special rates for bulk orders</p>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <img src="1000013359.png" alt="Shadi Bottle">
-        <div class="content">
-            <span class="tag" style="background:#ff4757;">WEDDING SPECIAL</span>
-            <h3>Shadi Custom Bottle</h3>
-            <p class="price">₹60</p>
-            <div class="qty-input">
-                <label>Quantity: </label>
-                <input type="number" value="100" min="50">
-            </div>
-            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Shadi Couple Bottle" class="btn-wa">Order on WhatsApp</a>
-        </div>
-    </div>
-</div>
+    <script>
+        function sendOrder(itemName, inputId) {
+            var qty = document.getElementById(inputId).value;
+            var phone = "917535034146"; // Your WhatsApp Number
+            
+            if (!qty || qty <= 0) {
+                alert("Please enter a valid quantity!");
+                return;
+            }
+
+            // Creating the message for WhatsApp
+            var text = "Namaste Avtar Royal Store,%0A%0AMujhe order book karna hai:%0A*Item:* " + itemName + "%0A*Quantity:* " + qty + " pieces.%0A%0AKripya mujhe iska price aur details batayein.";
+
+            // WhatsApp link execution
+            var waLink = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + text;
+            window.open(waLink, '_blank');
+        }
+    </script>
 
 </body>
 </html>
