@@ -1,129 +1,64 @@
-<!DOCTYPE html>
-<html lang="hi">
+<!<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avtar Royal Store | Order Now</title>
+    <title>Avtar Royal Store</title>
     <style>
-        :root {
-            --primary: #001f3f; 
-            --gold: #FFD700;
-            --whatsapp: #25D366;
-            --white: #ffffff;
-        }
-
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; }
-        
-        /* Header */
-        header {
-            background: linear-gradient(rgba(0,31,63,0.9), rgba(0,31,63,0.9)), 
-                        url('https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover;
-            color: var(--gold);
-            text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 30px; }
-
-        /* Card Design */
-        .card {
-            background: var(--white);
-            width: 320px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: 0.4s;
-            border: 1px solid #ddd;
-        }
-
+        :root { --primary: #001f3f; --gold: #FFD700; --whatsapp: #25D366; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 0; text-align: center; }
+        header { background: var(--primary); color: var(--gold); padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px; }
+        .card { background: white; border-radius: 20px; width: 330px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.3s; }
         .card:hover { transform: translateY(-10px); }
-
-        .card img { width: 100%; height: 220px; object-fit: cover; }
-
-        .content { padding: 20px; text-align: center; }
-
-        .tag {
-            background: var(--gold);
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        h3 { margin: 15px 0 5px; color: var(--primary); font-size: 20px; }
-        .price { font-size: 24px; color: #2ecc71; font-weight: bold; margin-bottom: 15px; }
-
-        /* Order Box */
-        .order-options { background: #f9f9f9; padding: 15px; border-radius: 15px; margin-bottom: 15px; }
-        input[type="number"] { width: 80px; padding: 8px; border-radius: 8px; border: 1px solid #ccc; text-align: center; }
-
-        /* WhatsApp Button */
-        .btn-wa {
-            background-color: var(--whatsapp);
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            gap: 10px;
-            transition: 0.3s;
-        }
-        .btn-wa:hover { background-color: #1eb954; box-shadow: 0 5px 15px rgba(37,211,102,0.4); }
-
+        .card img { width: 100%; height: 350px; object-fit: cover; }
+        .content { padding: 20px; }
+        .tag { background: #ff4757; color: white; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: bold; }
+        .price { font-size: 26px; color: #2ecc71; font-weight: bold; margin: 15px 0; }
+        .qty-input { margin-bottom: 20px; }
+        input[type="number"] { width: 80px; padding: 8px; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
+        .btn-wa { background: var(--whatsapp); color: white; padding: 15px; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: bold; gap: 10px; font-size: 18px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 style="margin:0; letter-spacing: 2px;">👑 AVTAR ROYAL STORE</h1>
+    <h1>👑 AVTAR ROYAL STORE</h1>
     <p style="color: white; opacity: 0.8;">Premium Customized Water Bottles</p>
 </header>
 
 <div class="container">
-
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1000" alt="Birthday Bottle">
+        <img src="https://raw.githubusercontent.com/kiahan988/Avtar-/main/1000010907.jpg" alt="Avtar Normal Bottle">
         <div class="content">
-            <span class="tag">Birthday Special</span>
-            <h3>Custom Birthday Bottle</h3>
-            <div class="price">₹25</div>
-            
-            <div class="order-options">
+            <span class="tag" style="background: var(--primary);">AVTAR NAAM</span>
+            <h3>Premium Packaged Water</h3>
+            <p class="price">₹15</p>
+            <div class="qty-input">
                 <label>Quantity: </label>
-                <input type="number" id="qty1" value="100" min="20">
+                <input type="number" value="100" min="20">
             </div>
-
-            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Birthday Special Bottles" class="btn-wa">
+            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Normal Packaged Water Bottles" class="btn-wa">
                 Order on WhatsApp
             </a>
         </div>
     </div>
 
     <div class="card">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" alt="Wedding Bottle">
+        <img src="https://raw.githubusercontent.com/kiahan988/Avtar-/main/1000013359.png" alt="Shadi Couple Bottle">
         <div class="content">
-            <span class="tag" style="background:#ff4757; color:white;">Wedding / Shadi</span>
-            <h3>Royal Wedding Bottle</h3>
-            <div class="price">₹30</div>
-
-            <div class="order-options">
+            <span class="tag">WEDDING SPECIAL</span>
+            <h3>Shadi Custom Bottle</h3>
+            <p class="price">₹60</p>
+            <div class="qty-input">
                 <label>Quantity: </label>
-                <input type="number" id="qty2" value="500" min="50">
+                <input type="number" value="100" min="50">
             </div>
-
-            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Wedding Special Bottles" class="btn-wa">
+            <a href="https://wa.me/917535034146?text=Hi Avtar, I want to order Shadi Custom Bottles with Couple Photo" class="btn-wa">
                 Order on WhatsApp
             </a>
         </div>
     </div>
-
 </div>
 
 </body>
