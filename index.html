@@ -76,58 +76,111 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f0f2f5; text-align: center; }
         header { background-color: #001f3f; color: #FFD700; padding: 25px; border-bottom: 5px solid #FFD700; }
-        header h1 { margin: 0; font-size: 26px; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
-        .card { background: white; border-radius: 15px; width: 300px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); border: 1px solid #ddd; }
-        /* Image fix: Direct links from Unsplash */
-        .card img { width: 100%; height: 250px; object-fit: contain; border-radius: 10px; background: #fff; }
-        h3 { color: #001f3f; margin: 15px 0; }
-        .qty-box { width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 8px; box-sizing: border-box; font-size: 16px; outline: none; }
-        .qty-box:focus { border-color: #001f3f; }
-        .btn { display: block; background: #25D366; color: white; padding: 14px; text-decoration: none; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; width: 100%; font-size: 16px; transition: 0.3s; }
-        .btn:hover { background: #128C7E; transform: scale(1.02); }
-        .note { font-size: 11px; color: #777; margin-top: 10px; font-style: italic; }
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVTAR CUSTOMS | Premium Bottle Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #D4AF37; --dark: #222; --light-bg: #f0f0f0; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: var(--light-bg); color: #333; }
+
+        /* Top Header */
+        header { background: #1a1a1a; color: var(--gold); padding: 40px 10px; text-align: center; border-bottom: 4px solid var(--gold); }
+        header h1 { font-size: 2.5rem; margin: 0; letter-spacing: 3px; }
+        header p { color: #fff; font-size: 0.9rem; margin-top: 5px; }
+
+        /* Gallery Section */
+        .gallery-container { text-align: center; padding: 40px 10px; }
+        .gallery-title { font-size: 1.5rem; text-transform: lowercase; color: #555; margin-bottom: 20px; }
+        .gallery-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .gallery-item { background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 200px; }
+        .gallery-item img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+        .gallery-item p { font-size: 0.8rem; font-weight: 600; margin: 0; }
+
+        /* Order Form Card */
+        .order-card { max-width: 500px; margin: 0 auto 50px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--gold); }
+        .form-header { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .form-group { display: flex; align-items: center; margin-bottom: 15px; }
+        .form-group label { width: 40%; font-size: 0.9rem; color: #666; }
+        .form-group input, .form-group select, .form-group textarea { width: 60%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; }
+
+        /* Buttons */
+        .btn-submit { background: #c8a22d; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
+        .wa-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-decoration: none; z-index: 1000; }
+
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #999; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>👑 AVTAR ROYAL STORE</h1>
-    <p>Premium Plastic Bottles - Wholesale Rate</p>
+    <h1>AVTAR CUSTOMS</h1>
+    <p>Har Khoubsurat Pral Ke Liye, Ek Yaadgaar Botal</p>
 </header>
 
-<div class="container">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500" alt="Plastic Bottle">
-        <h3>Normal Plastic Bottle</h3>
-        <input type="number" id="q1" class="qty-box" placeholder="Quantity batayein (Ex: 100)">
-        <button class="btn" onclick="order('Normal Plastic Bottle', 'q1')">WhatsApp Order</button>
-        <p class="note">Price details on WhatsApp</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1616149162402-e25394014902?w=500" alt="Clear Bottle">
-        <h3>Premium Clear Bottle</h3>
-        <input type="number" id="q2" class="qty-box" placeholder="Quantity batayein (Ex: 500)">
-        <button class="btn" onclick="order('Premium Clear Bottle', 'q2')">WhatsApp Order</button>
-        <p class="note">Badi quantity par heavy discount</p>
+<div class="gallery-container">
+    <div class="gallery-title">gallery</div>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Y8uYxVlKqLpUeMizkI6A5f7z_W7O0E0W4g&s" alt="Normal Bottle">
+            <p>Normal Plastic Bottle<br>(AVTAR Brand)</p>
+        </div>
+        <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-7n_K_P6h0E9mG6WfB1W6S6L7j8U9V0W1X2Y&s" alt="Wedding Bottle">
+            <p>Wedding Special Bottle</p>
+        </div>
     </div>
 </div>
 
-<script>
-    function order(name, id) {
-        var qty = document.getElementById(id).value;
-        if(!qty || qty <= 0) { 
-            alert("Bhai, pehle quantity toh likho!"); 
-            return; 
-        }
+<div class="order-card">
+    <div class="form-header">
+        <h2 style="font-size: 1.2rem; margin:0;">Order Booking</h2>
+        <i class="fas fa-shopping-cart"></i>
+        <h2 style="font-size: 1.2rem; margin:0;">Order Booking</h2>
+    </div>
+
+    <form action="https://formspree.io/f/mgolppaa" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Aapka Nam:</label>
+            <input type="text" name="name" placeholder="auipka uaim" required>
+        </div>
+        <div class="form-group">
+            <label>Bottle Type:</label>
+            <select name="type">
+                <option>Normal Plastic Bottle (AVTAR Brand)</option>
+                <option>Wedding Special Bottle</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input type="number" name="qty" placeholder="min 1" required>
+        </div>
+        <div class="form-group">
+            <label>Delivery & Mobile:</label>
+            <textarea name="details" placeholder="nomii" rows="2" required></textarea>
+        </div>
         
-        var phone = "917535034146";
-        var msg = "Namaste Avtar Royal Store,%0A%0AMujhe order book karna hai:%0A*Item:* " + name + "%0A*Quantity:* " + qty + " pieces.%0A%0AKripya iska rate batayein.";
-        
-        window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + msg, "_blank");
-    }
-</script>
+        <p style="font-size: 0.7rem; color: #25d366; text-align: center; margin: 10px 0;">
+            Normal Plastic Bottlles l s an puchm hall.
+        </p>
+
+        <button type="submit" class="btn-submit">Order Request Bheinjein</button>
+    </form>
+</div>
+
+<a href="https://wa.me/917535034146" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<footer>
+    <p>© 2026 Avtar Customs | All ceclo to Regrirled</p>
+    <p style="font-size: 0.6rem;">Thought</p>
+</footer>
 
 </body>
 </html>
