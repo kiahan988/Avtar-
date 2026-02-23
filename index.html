@@ -149,37 +149,68 @@
             <label>Aapka Nam:</label>
             <input type="text" name="name" placeholder="auipka uaim" required>
         </div>
-        <div class="form-group">
-            <label>Bottle Type:</label>
-            <select name="type">
-                <option>Normal Plastic Bottle (AVTAR Brand)</option>
-                <option>Wedding Special Bottle</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Quantity:</label>
-            <input type="number" name="qty" placeholder="min 1" required>
-        </div>
-        <div class="form-group">
-            <label>Delivery & Mobile:</label>
-            <textarea name="details" placeholder="nomii" rows="2" required></textarea>
-        </div>
-        
-        <p style="font-size: 0.7rem; color: #25d366; text-align: center; margin: 10px 0;">
-            Normal Plastic Bottlles l s an puchm hall.
-        </p>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVTAR CUSTOMS | Order Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #FFD700; --dark: #001f3f; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #f9f9f9; text-align: center; }
+        header { background: var(--dark); color: var(--gold); padding: 30px 10px; border-bottom: 4px solid var(--gold); }
+        .gallery { display: flex; justify-content: center; gap: 15px; padding: 20px; flex-wrap: wrap; }
+        .card { background: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 160px; }
+        .card img { width: 100%; border-radius: 8px; height: auto; display: block; }
+        .order-form { max-width: 400px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: left; }
+        input, select, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .btn { background: var(--gold); color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
 
-        <button type="submit" class="btn-submit">Order Request Bheinjein</button>
+<header>
+    <h1>AVTAR CUSTOMS</h1>
+    <p>Har Khoubsurat Pal Ke Liye, Ek Yaadgaar Botal</p>
+</header>
+
+<h3 style="margin-top:20px; color:#555;">Gallery</h3>
+<div class="gallery">
+    <div class="card">
+        <img src="1771763676052.png" alt="Normal Bottle">
+        <p>Normal Plastic Bottle<br><b>(AVTAR Brand)</b></p>
+    </div>
+    <div class="card">
+        <img src="1771762265162.png" alt="Wedding Bottle">
+        <p>Wedding Special<br><b>Custom Bottle</b></p>
+    </div>
+</div>
+
+<div class="order-form">
+    <h2 style="text-align:center;">Order Booking</h2>
+    <form action="https://formspree.io/f/mgolppaa" method="POST">
+        <label>Aapka Nam:</label>
+        <input type="text" name="name" placeholder="Aapka Naam Likhein" required>
+        
+        <label>Bottle Type:</label>
+        <select name="type">
+            <option>Normal Plastic Bottle</option>
+            <option>Wedding Special Bottle</option>
+        </select>
+        
+        <label>Quantity:</label>
+        <input type="number" name="qty" placeholder="Kitni botal chahiye?" required>
+        
+        <label>Delivery & Mobile:</label>
+        <textarea name="details" placeholder="Address aur Mobile No." rows="3" required></textarea>
+        
+        <button type="submit" class="btn">Order Request Bheinjein</button>
     </form>
 </div>
 
-<a href="https://wa.me/917535034146" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<footer>
-    <p>© 2026 Avtar Customs | All ceclo to Regrirled</p>
-    <p style="font-size: 0.6rem;">Thought</p>
+<footer style="padding: 20px; color: #888; font-size: 0.8rem;">
+    © 2026 Avtar Customs | All Rights Reserved
 </footer>
 
 </body>
