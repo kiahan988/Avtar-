@@ -7,31 +7,26 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #ffffff; margin: 0; padding: 0; text-align: center; }
         
-        /* Premium Header */
         header { background: #000; padding: 40px 10px; border-bottom: 6px solid #FFD700; }
         .welcome-box { border: 3px solid #FFD700; display: inline-block; padding: 15px 30px; border-radius: 50px; background: linear-gradient(145deg, #FFD700, #b8860b); }
         .welcome-box h1 { margin: 0; font-size: 20px; color: #000; text-transform: uppercase; letter-spacing: 2px; }
 
         .section-title { font-size: 32px; font-weight: bold; margin: 40px 0 10px; text-decoration: underline; }
 
-        /* 1. Vertical Layout Fix (Ek ke niche ek) */
         .main-content { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 30px; padding-bottom: 50px; }
         
         .card { width: 90%; max-width: 400px; background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
         .card img { width: 100%; height: auto; border-radius: 15px; background: #f9f9f9; }
         .card h3 { margin: 15px 0 5px; font-size: 22px; }
 
-        /* 2. Direct Gallery Link Trigger */
         .gallery-link { color: #007bff; font-weight: bold; text-decoration: underline; cursor: pointer; display: block; margin-top: 10px; font-size: 18px; }
 
-        /* Professional Gallery Modal */
         #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
         .modal-content { background: #fff; margin: 20px auto; padding: 20px; width: 90%; max-width: 500px; border-radius: 20px; position: relative; }
         .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .modal-grid img { width: 100%; border-radius: 10px; border: 1px solid #ddd; }
         .close-btn { position: absolute; top: -10px; right: -10px; background: #000; color: #FFD700; border: none; border-radius: 50%; width: 40px; height: 40px; font-weight: bold; cursor: pointer; }
 
-        /* Order Form Styling (Paper Design) */
         .order-section { background: #fff; width: 100%; padding: 40px 20px; box-sizing: border-box; border-top: 2px solid #eee; text-align: left; max-width: 600px; margin: 0 auto; }
         .order-section h2 { text-align: center; border-bottom: 2px solid #000; display: block; padding-bottom: 10px; margin-bottom: 30px; }
         
@@ -59,7 +54,7 @@
 
     <div class="main-content">
         <div class="card">
-            <img src="IMG-20260224-WA0009.jpg" alt="Standard Bottle">
+            <img src="1771936547800.png" alt="Standard Bottle">
             <h3>Standard Water Bottle's</h3>
             <p>(AVTAR DRINKS)</p>
         </div>
@@ -159,3 +154,19 @@
     </script>
 </body>
 </html>
+
+            const type = document.getElementById('type').value;
+            const q = (document.getElementById('finalQty').value === 'More') ? document.getElementById('customQty').value : document.getElementById('finalQty').value;
+            const name = document.getElementById('name').value;
+            const city = document.getElementById('city').value;
+            const area = document.getElementById('area').value;
+
+            if(!name || !q) { alert("Details fill karein!"); return; }
+
+            const msg = `*NEW ORDER*%0A*Bottle:* ${type}%0A*Qty:* ${q}%0A*Name:* ${name}%0A*Address:* ${area}, ${city}`;
+            window.open(`https://wa.me/917535034146?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
+
