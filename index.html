@@ -158,60 +158,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #FFD700; --dark: #001f3f; }
-        body { font-family: 'Poppins', sans-serif; margin: 0; background-color: #f9f9f9; text-align: center; }
-        header { background: var(--dark); color: var(--gold); padding: 30px 10px; border-bottom: 4px solid var(--gold); }
-        .gallery { display: flex; justify-content: center; gap: 15px; padding: 20px; flex-wrap: wrap; }
-        .card { background: white; padding: 10px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 160px; }
-        .card img { width: 100%; border-radius: 8px; height: auto; display: block; }
-        .order-form { max-width: 400px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: left; }
-        input, select, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .btn { background: var(--gold); color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avtar Water Booking</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; text-align: center; margin: 0; padding: 10px; }
+        .gallery-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .card { background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 45%; max-width: 200px; cursor: pointer; }
+        .card img { width: 100%; border-radius: 8px; height: 180px; object-fit: cover; }
+        
+        /* Modal Style for Wedding Gallery */
+        #galleryModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
+        .modal-content { background: white; margin: 10% auto; padding: 20px; width: 90%; border-radius: 15px; position: relative; }
+        .modal-images { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .modal-images img { width: 100%; border-radius: 5px; border: 1px solid #ddd; }
+        .close-btn { position: absolute; top: 10px; right: 10px; background: #333; color: white; border: none; padding: 5px 10px; border-radius: 50%; cursor: pointer; }
+
+        /* Form Area */
+        .order-form { background: white; padding: 20px; border-radius: 20px; margin-top: 30px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
+        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-sizing: border-box; }
+        .order-btn { background: #FFD700; color: #000; font-weight: bold; border: none; padding: 15px; width: 100%; border-radius: 8px; cursor: pointer; font-size: 16px; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>AVTAR CUSTOMS</h1>
-    <p>Har Khoubsurat Pal Ke Liye, Ek Yaadgaar Botal</p>
-</header>
+    <h2 style="color: #444;">Gallery</h2>
+    
+    <div class="gallery-container">
+        <div class="card">
+            <img src="1771906199750.png" alt="Standard Bottle">
+            <h4 style="margin: 10px 0 5px;">Standard Water Bottle</h4>
+            <p style="font-size: 12px; color: #777;">(AVTAR Brand)</p>
+        </div>
 
-<h3 style="margin-top:20px; color:#555;">Gallery</h3>
-<div class="gallery">
-    <div class="card">
-        <img src="1771763676052.png" alt="Normal Bottle">
-        <p>Normal Plastic Bottle<br><b>(AVTAR Brand)</b></p>
+        <div class="card" onclick="openWeddingGallery()">
+            <img src="1771906211222.png" alt="Wedding Special">
+            <h4 style="margin: 10px 0 5px;">Wedding Special</h4>
+            <p style="font-size: 12px; color: #777;"><strong>Custom Bottle</strong></p>
+            <span style="font-size: 10px; color: blue;">Click to View More</span>
+        </div>
     </div>
-    <div class="card">
-        <img src="1771762265162.png" alt="Wedding Bottle">
-        <p>Wedding Special<br><b>Custom Bottle</b></p>
+
+    <div id="galleryModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeGallery()">X</button>
+            <h3 style="margin-bottom: 20px;">Hamari Wedding Designs</h3>
+            <div class="modal-images">
+                <img src="1771875480204.png">
+                <img src="1771906006716.png">
+                <img src="1771906211222.png">
+                </div>
+        </div>
     </div>
-</div>
 
-<div class="order-form">
-    <h2 style="text-align:center;">Order Booking</h2>
-    <form action="https://formspree.io/f/mgolppaa" method="POST">
-        <label>Aapka Nam:</label>
-        <input type="text" name="name" placeholder="Aapka Naam Likhein" required>
-        
-        <label>Bottle Type:</label>
-        <select name="type">
-            <option>Normal Plastic Bottle</option>
-            <option>Wedding Special Bottle</option>
-        </select>
-        
-        <label>Quantity:</label>
-        <input type="number" name="qty" placeholder="Kitni botal chahiye?" required>
-        
-        <label>Delivery & Mobile:</label>
-        <textarea name="details" placeholder="Address aur Mobile No." rows="3" required></textarea>
-        
-        <button type="submit" class="btn">Order Request Bheinjein</button>
-    </form>
-</div>
+    <div class="order-form">
+        <h3 style="margin-bottom: 20px;">Order Booking</h3>
+        <form action="https://formspree.io/f/mgolppaa" method="POST" id="bookingForm">
+            <input type="text" name="Name" id="custName" placeholder="Aapka Naam Likhein" required>
+            
+            <select name="BottleType" id="bottleType">
+                <option value="Standard Water Bottle">Standard Water Bottle</option>
+                <option value="Wedding Custom Bottle">Wedding Custom Bottle</option>
+            </select>
 
-<footer style="padding: 20px; color: #888; font-size: 0.8rem;">
-    © 2026 Avtar Customs | All Rights Reserved
-</footer>
+            <input type="number" name="Quantity" id="quantity" placeholder="Kitni botal chahiye?" required>
+            <textarea name="Address_Mobile" id="address" rows="3" placeholder="Address aur Mobile No." required></textarea>
+            
+            <button type="button" class="order-btn" onclick="sendOrder()">Order Request Bheinjein</button>
+        </form>
+    </div>
+
+    <script>
+        function openWeddingGallery() {
+            document.getElementById('galleryModal').style.display = 'block';
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').style.display = 'none';
+        }
+
+        function sendOrder() {
+            let name = document.getElementById('custName').value;
+            let type = document.getElementById('bottleType').value;
+            let qty = document.getElementById('quantity').value;
+            let addr = document.getElementById('address').value;
+            let phone = "917535034146";
+
+            if(name == "" || qty == "" || addr == "") {
+                alert("Bhai, saari details bharna zaroori hai!");
+                return;
+            }
+
+            // 1. WhatsApp par message bhejne ke liye
+            let message = `*Naya Order!*%0A%0A` +
+                          `*Naam:* ${name}%0A` +
+                          `*Bottle:* ${type}%0A` +
+                          `*Quantity:* ${qty}%0A` +
+                          `*Details:* ${addr}`;
+
+            // WhatsApp window open karega
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+
+            // 2. Formspree par data bhejne ke liye (Email notification)
+            document.getElementById('bookingForm').submit();
+        }
+    </script>
 
 </body>
 </html>
