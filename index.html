@@ -3,93 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avtar Water Booking</title>
+    <title>Avtar Water</title>
     <style>
-        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; text-align: center; margin: 0; padding: 0; }
-        header { background: #FFD700; padding: 15px; font-weight: bold; font-size: 22px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .gallery-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding: 20px; }
-        .card { background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 45%; max-width: 250px; padding: 15px; cursor: pointer; }
-        .card img { width: 100%; border-radius: 10px; height: 200px; object-fit: contain; }
-        .card h3 { font-size: 16px; margin: 10px 0 5px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; text-align: center; margin: 0; padding: 0; color: #333; }
+        header { background: #FFD700; padding: 25px; font-weight: bold; border-bottom: 3px solid #000; }
+        h1 { margin: 0; font-size: 24px; text-transform: uppercase; border: 2px solid #000; display: inline-block; padding: 10px 20px; background: #fff; border-radius: 5px; }
         
-        /* Modal Style */
-        #galleryModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
-        .modal-content { background: white; margin: 15% auto; padding: 20px; width: 85%; border-radius: 15px; position: relative; }
-        .modal-images { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .modal-images img { width: 100%; border-radius: 8px; }
-        .close-btn { position: absolute; top: 10px; right: 10px; background: #ff4444; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; }
+        .section-title { margin: 30px 0 10px; font-size: 24px; text-decoration: underline; font-weight: bold; }
+        
+        .gallery-container { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 90%; max-width: 450px; padding: 15px; }
+        .card img { width: 100%; border-radius: 10px; height: 300px; object-fit: cover; }
+        .card h3 { margin: 15px 0 5px; font-size: 20px; }
+        
+        .event-list { background: #fff; padding: 20px; border-radius: 10px; margin: 20px auto; width: 85%; max-width: 550px; border-left: 8px solid #FFD700; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 
-        /* Form */
-        .order-section { background: white; padding: 25px; border-radius: 30px 30px 0 0; margin-top: 20px; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
-        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-        .submit-btn { background: #FFD700; color: #000; font-weight: bold; border: none; padding: 15px; width: 100%; border-radius: 10px; cursor: pointer; font-size: 17px; }
+        .order-container { background: white; padding: 30px 20px; border-radius: 30px 30px 0 0; margin-top: 40px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 20px; }
+        label { font-weight: bold; display: block; margin-bottom: 8px; color: #444; font-size: 14px; }
+        input, select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 16px; background: #fafafa; }
+        
+        .qty-btns { display: flex; gap: 10px; margin-bottom: 20px; }
+        .qty-btn { flex: 1; padding: 12px; border: 2px solid #FFD700; background: white; border-radius: 8px; cursor: pointer; font-weight: bold; text-align: center; transition: 0.3s; }
+        .qty-btn.active { background: #FFD700; color: #000; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .order-now-btn { background: #25D366; color: #fff; font-weight: bold; border: none; padding: 20px; width: 100%; border-radius: 12px; cursor: pointer; font-size: 18px; margin-top: 25px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
     </style>
 </head>
 <body>
 
-    <header>AVTAR WATER CUSTOMS</header>
+    <header>
+        <h1>WELCOME TO AVTAR</h1>
+    </header>
 
-    <h2 style="margin-top:20px;">Gallery</h2>
+    <div class="section-title">GALLERY</div>
     
     <div class="gallery-container">
         <div class="card">
             <img src="1771913800868.png" alt="Standard Bottle">
-            <h3>Standard Water Bottle</h3>
-            <p>(AVTAR Brand)</p>
+            <h3>Standard Water Bottle's</h3>
+            <p>(AVTAR DRINKS)</p>
         </div>
 
-        <div class="card" onclick="openGallery()">
-            <img src="1771906211222.png" alt="Wedding Special">
-            <h3>Wedding Special</h3>
-            <p><strong>Custom Bottle</strong></p>
-            <small style="color:blue;">Click to see more</small>
+        <div class="card">
+            <img src="1771906211222.png" alt="Customize Bottle">
+            <h3>Customize Bottle's</h3>
+            <p>(Click to see more...) ➔ <span style="color: #888; font-style: italic;">LOADING</span></p>
         </div>
     </div>
 
-    <div id="galleryModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeGallery()">X</button>
-            <h3>Wedding Designs</h3>
-            <div class="modal-images">
-                <img src="1771875480204.png">
-                <img src="1771906006716.png">
-                <img src="1771906211222.png">
+    <div class="event-list">
+        <h3 style="margin-top:0; color: #000;">CUSTOMIZE FOR ANY EVENT ↓</h3>
+        <p style="font-size: 15px; line-height: 1.6;">WEDDING, GIFTING, FESTIVAL, CHARITY, HOTEL'S, CAFE ---- etc.</p>
+    </div>
+
+    <div class="order-container">
+        <h2 style="text-align: center; text-decoration: underline; margin-bottom: 30px;">CHOOSE BOTTLE'S</h2>
+        
+        <form id="orderForm">
+            <div class="form-group">
+                <label>CHOOSE TYPE</label>
+                <select id="bottleType">
+                    <option value="Standard Water Bottles">Standard Water Bottles</option>
+                    <option value="Customize Water Bottles">Customize Water Bottles</option>
+                </select>
             </div>
-        </div>
-    </div>
 
-    <div class="order-section">
-        <h3>Order Booking</h3>
-        <form action="https://formspree.io/f/mgolppaa" method="POST" id="orderForm">
-            <input type="text" name="Name" id="name" placeholder="Aapka Naam Likhein" required>
-            <select name="BottleType" id="type">
-                <option value="Standard Bottle">Standard Water Bottle</option>
-                <option value="Wedding Bottle">Wedding Special Bottle</option>
-            </select>
-            <input type="number" name="Quantity" id="qty" placeholder="Kitni botal chahiye?" required>
-            <textarea name="Address" id="addr" rows="3" placeholder="Address aur Mobile No." required></textarea>
-            <button type="button" class="submit-btn" onclick="sendOrder()">Order Request Bheinjein</button>
+            <label>QUANTITY</label>
+            <div class="qty-btns">
+                <div class="qty-btn active" onclick="setQty('1', this)">1</div>
+                <div class="qty-btn" onclick="setQty('2', this)">2</div>
+                <div class="qty-btn" onclick="setQty('3', this)">3</div>
+                <div class="qty-btn" onclick="setQty('More', this)">More</div>
+            </div>
+            <input type="hidden" id="selectedQty" value="1">
+
+            <h3 style="border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; color: #555;">DELIVERY ADDRESS ↓</h3>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>NAME</label>
+                    <input type="text" id="custName" placeholder="Kishan..." required>
+                </div>
+                <div class="form-group">
+                    <label>CONTACT NO-</label>
+                    <input type="tel" id="custPhone" value="+91 " required>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>STATE</label>
+                    <input type="text" id="state" placeholder="State" required>
+                </div>
+                <div class="form-group">
+                    <label>CITY</label>
+                    <input type="text" id="city" placeholder="City" required>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>PIN CODE</label>
+                    <input type="number" id="pin" placeholder="000000" required>
+                </div>
+                <div class="form-group">
+                    <label>ROAD / AREA</label>
+                    <input type="text" id="road" placeholder="Road name..." required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>HOUSE NO / BUILDING NO.</label>
+                <input type="text" id="house" placeholder="House no..." required>
+            </div>
+
+            <button type="button" class="order-now-btn" onclick="sendToWhatsApp()">ORDER NOW ON WHATSAPP</button>
         </form>
     </div>
 
     <script>
-        function openGallery() { document.getElementById('galleryModal').style.display = 'block'; }
-        function closeGallery() { document.getElementById('galleryModal').style.display = 'none'; }
+        function setQty(val, btn) {
+            document.getElementById('selectedQty').value = val;
+            let btns = document.querySelectorAll('.qty-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
 
-        function sendOrder() {
-            let n = document.getElementById('name').value;
-            let t = document.getElementById('type').value;
-            let q = document.getElementById('qty').value;
-            let a = document.getElementById('addr').value;
+        function sendToWhatsApp() {
+            let type = document.getElementById('bottleType').value;
+            let qty = document.getElementById('selectedQty').value;
+            let name = document.getElementById('custName').value;
+            let phone = document.getElementById('custPhone').value;
+            let state = document.getElementById('state').value;
+            let city = document.getElementById('city').value;
+            let pin = document.getElementById('pin').value;
+            let road = document.getElementById('road').value;
+            let house = document.getElementById('house').value;
 
-            if(n=="" || q=="" || a=="") { alert("Details bhariye!"); return; }
+            if(!name || !city || !house || !pin) {
+                alert("Please fill all the details!");
+                return;
+            }
 
-            // WhatsApp link
-            let msg = `*Naya Order!*%0A*Naam:* ${n}%0A*Bottle:* ${t}%0A*Quantity:* ${q}%0A*Address:* ${a}`;
-            window.open(`https://wa.me/917535034146?text=${msg}`, '_blank');
+            let whatsappNumber = "917535034146";
+            let message = `*AVTAR NEW ORDER*%0A%0A` +
+                          `*Bottle Type:* ${type}%0A` +
+                          `*Quantity:* ${qty}%0A%0A` +
+                          `*Customer Name:* ${name}%0A` +
+                          `*Contact:* ${phone}%0A%0A` +
+                          `*Delivery Address:*%0A` +
+                          `${house}, ${road}%0A` +
+                          `${city}, ${state} - ${pin}`;
 
-            // Formspree Submit
-            document.getElementById('orderForm').submit();
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         }
     </script>
 
