@@ -160,74 +160,85 @@
         :root { --gold: #FFD700; --dark: #001f3f; }
 <!DOCTYPE html>
 <html lang="hi">
+<head><!DOCTYPE html>
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avtar Water Booking</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; text-align: center; margin: 0; padding: 10px; }
-        .gallery-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
-        .card { background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 45%; max-width: 200px; cursor: pointer; }
-        .card img { width: 100%; border-radius: 8px; height: 180px; object-fit: cover; }
+        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; text-align: center; margin: 0; padding: 0; }
+        header { background: #FFD700; padding: 10px; font-weight: bold; font-size: 20px; }
         
-        /* Modal Style for Wedding Gallery */
-        #galleryModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
-        .modal-content { background: white; margin: 10% auto; padding: 20px; width: 90%; border-radius: 15px; position: relative; }
-        .modal-images { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .modal-images img { width: 100%; border-radius: 5px; border: 1px solid #ddd; }
-        .close-btn { position: absolute; top: 10px; right: 10px; background: #333; color: white; border: none; padding: 5px 10px; border-radius: 50%; cursor: pointer; }
+        .gallery-title { margin: 20px 0; font-size: 24px; color: #333; }
+        
+        .gallery-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding: 10px; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 45%; max-width: 250px; padding: 15px; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; border-radius: 10px; height: 200px; object-fit: contain; background: #f9f9f9; }
+        .card h3 { font-size: 16px; margin: 10px 0 5px; color: #222; }
+        .card p { font-size: 12px; color: #666; margin: 0; }
 
-        /* Form Area */
-        .order-form { background: white; padding: 20px; border-radius: 20px; margin-top: 30px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
-        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-sizing: border-box; }
-        .order-btn { background: #FFD700; color: #000; font-weight: bold; border: none; padding: 15px; width: 100%; border-radius: 8px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        /* Modal Gallery */
+        #galleryModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; overflow-y: auto; }
+        .modal-content { background: white; margin: 10% auto; padding: 20px; width: 85%; border-radius: 15px; position: relative; }
+        .modal-images { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .modal-images img { width: 100%; border-radius: 8px; border: 1px solid #eee; }
+        .close-btn { position: absolute; top: -15px; right: -15px; background: #ff4444; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; font-weight: bold; cursor: pointer; }
+
+        /* Order Form */
+        .order-section { background: white; padding: 30px 20px; border-radius: 30px 30px 0 0; margin-top: 30px; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
+        input, select, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 15px; box-sizing: border-box; background: #fafafa; }
+        .submit-btn { background: #FFD700; color: #000; font-weight: bold; border: none; padding: 15px; width: 100%; border-radius: 10px; cursor: pointer; font-size: 17px; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-    <h2 style="color: #444;">Gallery</h2>
+    <header>AVTAR WATER</header>
+
+    <h2 class="gallery-title">Gallery</h2>
     
     <div class="gallery-container">
         <div class="card">
             <img src="1771906199750.png" alt="Standard Bottle">
-            <h4 style="margin: 10px 0 5px;">Standard Water Bottle</h4>
-            <p style="font-size: 12px; color: #777;">(AVTAR Brand)</p>
+            <h3>Standard Water Bottle</h3>
+            <p>(AVTAR Brand)</p>
         </div>
 
         <div class="card" onclick="openWeddingGallery()">
             <img src="1771906211222.png" alt="Wedding Special">
-            <h4 style="margin: 10px 0 5px;">Wedding Special</h4>
-            <p style="font-size: 12px; color: #777;"><strong>Custom Bottle</strong></p>
-            <span style="font-size: 10px; color: blue;">Click to View More</span>
+            <h3>Wedding Special</h3>
+            <p><strong>Custom Bottle</strong></p>
+            <small style="color: blue;">Click to see more designs</small>
         </div>
     </div>
 
     <div id="galleryModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeGallery()">X</button>
-            <h3 style="margin-bottom: 20px;">Hamari Wedding Designs</h3>
+            <h3>Hamare Wedding Designs</h3>
             <div class="modal-images">
                 <img src="1771875480204.png">
                 <img src="1771906006716.png">
                 <img src="1771906211222.png">
-                </div>
+            </div>
         </div>
     </div>
 
-    <div class="order-form">
-        <h3 style="margin-bottom: 20px;">Order Booking</h3>
-        <form action="https://formspree.io/f/mgolppaa" method="POST" id="bookingForm">
-            <input type="text" name="Name" id="custName" placeholder="Aapka Naam Likhein" required>
+    <div class="order-section">
+        <h3>Order Booking</h3>
+        <form action="https://formspree.io/f/mgolppaa" method="POST" id="orderForm">
+            <input type="text" name="Name" id="name" placeholder="Aapka Naam Likhein" required>
             
-            <select name="BottleType" id="bottleType">
+            <select name="BottleType" id="type">
                 <option value="Standard Water Bottle">Standard Water Bottle</option>
-                <option value="Wedding Custom Bottle">Wedding Custom Bottle</option>
+                <option value="Wedding Special Bottle">Wedding Special Bottle</option>
             </select>
 
-            <input type="number" name="Quantity" id="quantity" placeholder="Kitni botal chahiye?" required>
-            <textarea name="Address_Mobile" id="address" rows="3" placeholder="Address aur Mobile No." required></textarea>
+            <input type="number" name="Quantity" id="qty" placeholder="Kitni botal chahiye?" required>
+            <textarea name="Details" id="details" rows="3" placeholder="Address aur Mobile No." required></textarea>
             
-            <button type="button" class="order-btn" onclick="sendOrder()">Order Request Bheinjein</button>
+            <button type="button" class="submit-btn" onclick="processOrder()">Order Request Bheinjein</button>
         </form>
     </div>
 
@@ -240,30 +251,24 @@
             document.getElementById('galleryModal').style.display = 'none';
         }
 
-        function sendOrder() {
-            let name = document.getElementById('custName').value;
-            let type = document.getElementById('bottleType').value;
-            let qty = document.getElementById('quantity').value;
-            let addr = document.getElementById('address').value;
-            let phone = "917535034146";
+        function processOrder() {
+            let n = document.getElementById('name').value;
+            let t = document.getElementById('type').value;
+            let q = document.getElementById('qty').value;
+            let d = document.getElementById('details').value;
+            let p = "917535034146";
 
-            if(name == "" || qty == "" || addr == "") {
-                alert("Bhai, saari details bharna zaroori hai!");
+            if(n=="" || q=="" || d=="") {
+                alert("Please saari jankari bharein!");
                 return;
             }
 
-            // 1. WhatsApp par message bhejne ke liye
-            let message = `*Naya Order!*%0A%0A` +
-                          `*Naam:* ${name}%0A` +
-                          `*Bottle:* ${type}%0A` +
-                          `*Quantity:* ${qty}%0A` +
-                          `*Details:* ${addr}`;
+            // WhatsApp Message
+            let msg = `*Naya Order!*%0A%0A*Naam:* ${n}%0A*Bottle:* ${t}%0A*Quantity:* ${q}%0A*Address:* ${d}`;
+            window.open(`https://wa.me/${p}?text=${msg}`, '_blank');
 
-            // WhatsApp window open karega
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-
-            // 2. Formspree par data bhejne ke liye (Email notification)
-            document.getElementById('bookingForm').submit();
+            // Formspree Submit (Email ke liye)
+            document.getElementById('orderForm').submit();
         }
     </script>
 
